@@ -1,16 +1,22 @@
 export default function Home() {
   return (
     <main>
-      <h1 className="text-3xl">Hello World</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-        in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-        officia deserunt mollit anim id est laborum.
-      </p>
+      <section className="mb-24 w-full md:w-2/3 text-xl">
+        <p>
+          I'm Brinley Macnamara, a frontend engineer
+          from Boston. I make websites that are modern, 
+          accessible, and performant. Occaisionally, I make 
+          podcasts that are thoroughly researched. I value:
+        </p>
+        <ol>
+          <li>1. Clean code</li>
+          <li>2. Stunning documentation</li>
+          <li>3. And above all, meticulous engineering</li>
+        </ol>
+      </section>
+      <section className="my-24">
+        <h2 className="text-3xl">Recent Posts</h2>
+      </section>
     </main>
   )
 }

@@ -37,7 +37,7 @@ export default function Navbar() {
   return (
     <nav className="flex flex-row w-full items-center justify-between">
       <Link href="/">
-        <h1 className="text-3xl">{"Brinley" + currentRoute}</h1>
+        <h1 className="text-4xl">{"Brinley" + currentRoute}</h1>
       </Link>
       {/* Mobile Menu */}
       <button 
