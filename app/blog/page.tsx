@@ -1,7 +1,12 @@
-export default function Blog() {
+import { getAllPosts } from "@/utils/blog";
+import { PostMeta } from "@/types/blog";
+import Posts from "@/app/components/Posts";
+
+export default async function Blog() {
+  const posts: PostMeta[] = await getAllPosts();
   return (
     <>
-      <h1>Blog page!</h1>
+      <Posts posts={posts} />
     </>
   )
 }

@@ -5,8 +5,6 @@ import { useState, Fragment } from 'react';
 import { Bars2Icon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
-const logo = "{ }"
-
 interface MobileMenuProps {
   mobileMenuIsOpen: boolean,
   setMobileMenuIsOpen: (m: boolean) => void
@@ -37,7 +35,8 @@ export default function Navbar() {
   return (
     <nav className="flex flex-row w-full items-center justify-between">
       <Link href="/">
-        <h1 className="text-4xl">{"Brinley" + currentRoute}</h1>
+        {/* <h1 className="text-4xl">{"Brinley" + currentRoute}</h1> */}
+        <h1 className="text-4xl">Brinley M.</h1>
       </Link>
       {/* Mobile Menu */}
       <button 
