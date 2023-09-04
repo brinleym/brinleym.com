@@ -1,7 +1,9 @@
+import PageHeading from "@/app/components/PageHeading"
+
 export default function Freelance() {
   return (
     <>
-      <h1>Freelance page!</h1>
+      <PageHeading>Freelance</PageHeading>
     </>
   )
 }

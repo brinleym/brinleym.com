@@ -4,11 +4,11 @@
 
 /* Light Theme */
 :root {
-  --primary-accent: #984061;
+  --primary: #984061;
   --on-primary: #ffffff;
   --primary-container: #ffd9e2;
   --on-primary-container: #3e001d;
-  --secondary-accent: #74565f;
+  --secondary: #74565f;
   --on-secondary: #ffffff;
   --secondary-container: #ffd9e2;
   --on-secondary-container: #2b151c;
@@ -28,7 +28,6 @@
 }
 
 /* Dark Theme */
-
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #ffb0c8;
@@ -67,7 +66,12 @@ body {
 
 
 h1, h2 {
-  font-family: var(--font-ibarra-real-nova);
+  /* font-family: var(--font-ibarra-real-nova); */
+  /* font-family: var(--font-exo); */
+  /* font-family: var(--font-unbounded); */
+  font-family: var(--font-space-grotesk);
+  /* font-family: var(--font-gloock); */
+  /* font-family: var(--font-marcellus); */
 }
 
 .nav-mobile {

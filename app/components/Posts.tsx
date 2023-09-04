@@ -9,7 +9,7 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
       {posts.map(({title, date, slug}: PostMeta) => {
         return (
           <li>
-            <Card key={title}>
+            <Card key={title} condensed={true}>
               <div className="flex flex-col md:flex-row justify-between md:items-center">
                 <Link href={`/blog/${slug}`}><h3 className="text-lg hover:underline">{title}</h3></Link>
                 <p className="text-sm"><Date dateString={date} /></p>
