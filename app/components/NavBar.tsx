@@ -34,48 +34,49 @@ export default function Navbar() {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   return (
     <nav className="flex flex-row w-full items-center justify-between">
-      <Link href="/">
-        {/* <h1 className="text-4xl">{"Brinley" + currentRoute}</h1> */}
-        <h1 className="text-4xl">Brinley M.</h1>
-      </Link>
-      {/* Mobile Menu */}
-      <button 
-        onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
-        className="flex flex-col justify-between items-end md:hidden"
-      >
-        <Bars2Icon className="text-[var(--on-background)] w-8 h-8"/>
-      </button>
-      {mobileMenuIsOpen && 
-        <div className="md:hidden">
-          <MobileMenu 
-            mobileMenuIsOpen={mobileMenuIsOpen}
-            setMobileMenuIsOpen={setMobileMenuIsOpen}
-          />
-        </div>
-      }
-      {/* Desktop Menu */}
-      <div className="hidden md:block">
-        <DesktopMenu />
-      </div>
+      <HomeLink />
+      <MobileMenu />
+      <DesktopMenu />
     </nav>
   )
 }
 
-function MobileMenu({ mobileMenuIsOpen, setMobileMenuIsOpen }: MobileMenuProps) {
+function HomeLink() {
+  return (
+    <Link href="/">
+      <h1 className="text-3xl md:text-4xl">Brinley M.</h1>
+    </Link> 
+  )
+}
+
+function MobileMenu() {
+  const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   const currentRoute = usePathname();
 
   return (
-    <div className="rounded-l-lg fixed right-0 top-0 p-8 w-1/2 bg-[var(--background)] flex flex-col items-end">
+    <div className="md:hidden">
       <button 
-        className="mb-4"
-        onClick={() => setMobileMenuIsOpen(false)}>
-        <XMarkIcon className="w-8 h-8 text-[var(--on-background)]"/>
+        onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
+      >
+        {mobileMenuIsOpen ? "close" : "menu"}
       </button>
-      {menuItems.map(({path, text}: MenuLink) => 
-        <Fragment key={path}>
-          <MobileMenuLink path={path} text={text} isCurrentRoute={currentRoute === path} />
-        </Fragment>
-      )}
+      {mobileMenuIsOpen &&
+        <div className="bg-[var(--background)] text-[var(--on-background)] fixed p-8 top-0 left-0 w-full flex flex-col">
+          <div className="mb-8 w-full flex flex-row justify-between items-center">
+            <HomeLink />
+            <button 
+              onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
+            >
+              {mobileMenuIsOpen ? "close" : "menu"}
+            </button>    
+          </div>
+          {menuItems.map(({path, text}: MenuLink) => 
+            <Fragment key={path}>
+              <MobileMenuLink path={path} text={text} isCurrentRoute={currentRoute === path} />
+            </Fragment>
+          )}
+        </div>
+      }     
     </div>
   )
 }
@@ -83,10 +84,10 @@ function MobileMenu({ mobileMenuIsOpen, setMobileMenuIsOpen }: MobileMenuProps) 
 function MobileMenuLink( { path, text, isCurrentRoute }: MenuLinkProps) {
   return (
     <Link 
-      className="text-xl m-2 text-[var(--on-background)] py-2 hover:underline hover:underline-offset-2"
+      className="text-3xl m-2 text-[var(--on-background)] py-2 hover:underline hover:underline-offset-2"
       href={path}
     >
-      {isCurrentRoute ? `{ ${text} }` : text}
+      <h1>{isCurrentRoute ? `{ ${text} }` : text}</h1>
     </Link>
   )
 }
@@ -95,7 +96,7 @@ function DesktopMenu() {
   const currentRoute = usePathname();
 
   return (
-    <div className="hidden md:flex gap-8">
+    <div className="hidden md:block md:flex gap-8">
       {menuItems.map(({path, text}: MenuLink) => 
         <Fragment key={path}>
           <DesktopMenuLink path={path} text={text} isCurrentRoute={currentRoute === path}/>
