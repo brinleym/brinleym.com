@@ -77,9 +77,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`
-        p-8
-        max-w-4xl
-        mx-auto
         ${ibarraRealNova.variable}
         ${inconsolata.variable}
         ${spaceGrotesk.variable}
@@ -90,7 +87,7 @@ export default function RootLayout({
         ${marcellus.variable}
       `}>
         <Navbar />
-        <main className="mt-12">
+        <main className="mt-12 p-8 max-w-4xl mx-auto">
           {children}
         </main>
       </body>

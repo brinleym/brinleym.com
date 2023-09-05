@@ -1,14 +1,7 @@
 'use client';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
-import { useState, Fragment } from 'react';
-import { Bars2Icon } from '@heroicons/react/24/solid';
-import { XMarkIcon } from '@heroicons/react/24/outline';
-
-interface MobileMenuProps {
-  mobileMenuIsOpen: boolean,
-  setMobileMenuIsOpen: (m: boolean) => void
-}
+import { useState, Fragment, useEffect } from 'react';
 
 interface MenuLinkProps {
   path: string,
@@ -30,10 +23,28 @@ const menuItems: MenuLink[] = [
 ]
 
 export default function Navbar() {
-  const currentRoute = usePathname();
-  const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+
+  const [navbarBackground, setNavbarBackground] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 25) {
+        setNavbarBackground(true);
+      } else {
+        setNavbarBackground(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="flex flex-row w-full items-center justify-between">
+    <nav className={`${navbarBackground && "bg-[var(--background)]"} p-8 sticky top-0 flex flex-row w-full items-center justify-between transition-colors`}>
       <HomeLink />
       <MobileMenu />
       <DesktopMenu />
@@ -87,7 +98,7 @@ function MobileMenuLink( { path, text, isCurrentRoute }: MenuLinkProps) {
       className="text-3xl m-2 text-[var(--on-background)] py-2 hover:underline hover:underline-offset-2"
       href={path}
     >
-      <h1>{isCurrentRoute ? `{ ${text} }` : text}</h1>
+      <h1>{isCurrentRoute ? `[ ${text} ]` : text}</h1>
     </Link>
   )
 }
@@ -112,7 +123,7 @@ function DesktopMenuLink( { path, text, isCurrentRoute }: MenuLinkProps) {
       className={`text-[var(--on-background)] hover:underline hover:underline-offset-2`}
       href={path}
     >
-      {isCurrentRoute ? `{ ${text} }` : text}
+      {isCurrentRoute ? `[ ${text} ]` : text}
     </Link>
   )
 }
