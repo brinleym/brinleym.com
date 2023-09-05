@@ -27,10 +27,7 @@ export default function Card({ children, condensed=false, additionalStyles="", l
 
 function CardContent({ children, condensed, additionalStyles }: CardContentProps) {
   return (
-/*     <div className={`${condensed ? "p-3" : "p-4"} shadow-md rounded-md hover:shadow-lg bg-[var(--surface-variant)] text-[var(--on-surface-variant)] hover:bg-[var(--secondary-container)] hover:text-[var(--on-secondary-container)] transition-all duration-300 ${additionalStyles}`}>
-      {children}
-    </div> */
-    <div className={`${condensed ? "p-3" : "p-4"} shadow-md rounded-md hover:shadow-lg bg-gradient-to-br from-[var(--surface-variant)] to-[var(--secondary-container)] text-[var(--on-surface-variant)] hover:from-[var(--secondary-container)] hover:to-[var(--secondary-container)] hover:text-[var(--on-secondary-container)] transition-all duration-300 ${additionalStyles}`}>
+    <div className={`${condensed ? "p-3" : "p-4"} shadow-md rounded-md hover:shadow-lg bg-[var(--surface-variant)] text-[var(--on-surface-variant)] hover:bg-[var(--secondary-container)] hover:text-[var(--on-secondary-container)] transition-all duration-300 ${additionalStyles}`}>
       {children}
     </div>
   )
