@@ -9,8 +9,8 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
     <ul className="flex flex-col gap-3">
       {posts.map(({title, date, slug}: PostMeta) => {
         return (
-          <li>
-            <Card key={title} condensed={true} additionalStyles="group" link={`/blog/${slug}`}>
+          <li key={title}>
+            <Card condensed={true} additionalStyles="group" link={`/blog/${slug}`}>
               <div className="flex flex-col md:flex-row justify-between md:items-center">
                 <h3 className="text-lg">{title}</h3>
                 <div className="flex flex-row justify-end gap-3">

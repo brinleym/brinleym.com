@@ -2,27 +2,21 @@ import Link from "next/link";
 import { ProjectMeta } from "@/types/projects";
 import Card from "./Card";
 import SecondaryButton from "./SecondaryButton";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 
 export default function Projects({ projects }: { projects: ProjectMeta[] }) {
   return (
-    <ul className="flex flex-col gap-3 md:flex-row justify-between md:justify-start md:items-stretch">
+    <ul className="flex flex-col gap-3">
       {projects.map(({ title, description, demo, slug }: ProjectMeta) => {
         return (
-          <li key={title} className="w-full md:w-1/3">
-            <Card additionalStyles="h-full flex flex-col justify-between">
-              <div>
+          <li key={title} className="">
+            <Card condensed={true} additionalStyles="group" link={`/projects/${slug}`}>
+              <div className="flex flex-col md:flex-row justify-between md:items-center">
                 <h3 className="text-lg">{title}</h3>
-                <p className="text-sm">{description}</p>
-              </div>
-              <div className="flex flex-row justify-end gap-2 pt-4">
-                <Link href={`/projects/${slug}`}>
-                  <SecondaryButton condensed={true}>Article</SecondaryButton>
-                </Link>
-                {demo &&
-                  <Link href={demo}>
-                    <SecondaryButton condensed={true}>Demo</SecondaryButton>
-                  </Link>
-                }
+                <div className="flex flex-row justify-end gap-3">
+                  <p className="text-sm">{description}</p>
+                  <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-all" />
+                </div>
               </div>
             </Card>  
           </li>

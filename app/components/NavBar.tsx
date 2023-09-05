@@ -44,7 +44,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`${navbarBackground && "bg-[var(--background)]"} p-8 sticky top-0 flex flex-row w-full items-center justify-between transition-colors`}>
+    <nav className={`${navbarBackground && "z-50 bg-[var(--background)]"} p-8 sticky top-0 flex flex-row w-full items-center justify-between transition-colors`}>
       <HomeLink />
       <MobileMenu />
       <DesktopMenu />
