@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 import { useState, Fragment, useEffect } from 'react';
+// import { createPortal } from 'react-dom';
 
 interface MenuLinkProps {
   path: string,
@@ -44,7 +45,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`${navbarBackground && "bg-[var(--background)]"} p-8 sticky top-0 flex flex-row w-full items-center justify-between transition-colors`}>
+    <nav className={`${navbarBackground && "bg-[var(--background)]"} p-8 fixed top-0 left-0 flex flex-row w-full items-center justify-between transition-colors`}>
       <HomeLink />
       <MobileMenu />
       <DesktopMenu />
