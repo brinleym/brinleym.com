@@ -7,10 +7,10 @@ export default function PrimaryCard({ children, link="", condensed=false, additi
       children={children}
       link={link}
       condensed={condensed}
-      backgroundColor="[var(--primary-container)]"
-      textColor="[var(--on-primary-container)]"
-      hoverBackgroundColor={`${link.length > 0 ? "[var(--secondary-container)]": ""}`}
-      hoverTextColor={`${link.length > 0 ? "[var(--on-secondary-container)]": ""}`}
+      backgroundColor="bg-[var(--primary-container)]"
+      textColor="text-[var(--on-primary-container)]"
+      hoverBackgroundColor={`${link.length > 0 ? "hover:bg-[var(--secondary-container)]": ""}`}
+      hoverTextColor={`${link.length > 0 ? "hover:text-[var(--on-secondary-container)]": ""}`}
       additionalStyles={additionalStyles}  
     />
   )

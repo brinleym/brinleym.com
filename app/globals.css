@@ -28,7 +28,6 @@
 }
 
 /* Dark Theme */
-/*
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #ffb0c8;
@@ -54,7 +53,7 @@
     --outline: #9e8c90;
   }
 }
-*/
+
 body {
   background: linear-gradient(174deg, var(--background) 70%, var(--surface-variant) 100%) fixed;
   color: var(--on-background);
@@ -63,12 +62,7 @@ body {
 
 
 h1, h2 {
-  /* font-family: var(--font-ibarra-real-nova); */
-  /* font-family: var(--font-exo); */
-  /* font-family: var(--font-unbounded); */
   font-family: var(--font-space-grotesk);
-  /* font-family: var(--font-gloock); */
-  /* font-family: var(--font-marcellus); */
 }
 
 .postHeader {

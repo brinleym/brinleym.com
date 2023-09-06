@@ -7,10 +7,10 @@ export default function BackgroundCard({ children, link="", condensed=false, add
       children={children}
       link={link}
       condensed={condensed}
-      backgroundColor="[var(--background)]"
-      textColor="[var(--on-background)]"
-      hoverBackgroundColor={`${link.length > 0 ? "[var(--secondary-container)]": ""}`}
-      hoverTextColor={`${link.length > 0 ? "[var(--on-secondary-container)]": ""}`}
+      backgroundColor="bg-[var(--background)]"
+      textColor="text-[var(--on-background)]"
+      hoverBackgroundColor={`${link.length > 0 ? "hover:bg-[var(--secondary-container)]": ""}`}
+      hoverTextColor={`${link.length > 0 ? "hover:text-[var(--on-secondary-container)]": ""}`}
       additionalStyles={additionalStyles}  
     />
   )
