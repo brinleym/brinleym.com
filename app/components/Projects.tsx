@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { ProjectMeta } from "@/types/projects";
-import Card from "./Card";
-import SecondaryButton from "./SecondaryButton";
+import SurfaceVariantCard from "./card/SurfaceVariantCard";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 
 export default function Projects({ projects }: { projects: ProjectMeta[] }) {
@@ -10,7 +8,7 @@ export default function Projects({ projects }: { projects: ProjectMeta[] }) {
       {projects.map(({ title, description, demo, slug }: ProjectMeta) => {
         return (
           <li key={title} className="">
-            <Card condensed={true} additionalStyles="group" link={`/projects/${slug}`}>
+            <SurfaceVariantCard condensed={true} additionalStyles="group" link={`/projects/${slug}`}>
               <div className="flex flex-col md:flex-row justify-between md:items-center">
                 <h3 className="text-lg">{title}</h3>
                 <div className="flex flex-row justify-end gap-3">
@@ -18,7 +16,7 @@ export default function Projects({ projects }: { projects: ProjectMeta[] }) {
                   <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-all" />
                 </div>
               </div>
-            </Card>  
+            </SurfaceVariantCard>  
           </li>
         )
       })}

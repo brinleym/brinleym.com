@@ -28,6 +28,7 @@
 }
 
 /* Dark Theme */
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #ffb0c8;
@@ -53,7 +54,7 @@
     --outline: #9e8c90;
   }
 }
-
+*/
 body {
   background: linear-gradient(174deg, var(--background) 70%, var(--surface-variant) 100%) fixed;
   color: var(--on-background);
