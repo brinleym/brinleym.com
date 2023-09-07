@@ -25,27 +25,8 @@ const menuItems: MenuLink[] = [
 
 export default function Navbar() {
 
-  const [navbarBackground, setNavbarBackground] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 25) {
-        setNavbarBackground(true);
-      } else {
-        setNavbarBackground(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
-    <nav className={`${navbarBackground && "bg-[var(--background)]"} p-8 fixed top-0 left-0 flex flex-row w-full items-center justify-between transition-colors`}>
+    <nav className={`bg-[var(--background)] text-[var(--on-background)] p-8 fixed top-0 left-0 flex flex-row w-full items-center justify-between transition-colors`}>
       <HomeLink />
       <MobileMenu />
       <DesktopMenu />
