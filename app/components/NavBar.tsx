@@ -1,9 +1,21 @@
 'use client';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 
-interface MenuLinkProps {
+interface MobileMenuProps {
+  isOpen: boolean,
+  setIsOpen: (isOpen: boolean) => void
+}
+
+interface MobileMenuLinkProps {
+  path: string,
+  text: string,
+  isCurrentRoute: boolean,
+  setMobileMenuIsOpen: (arg0: false) => void
+}
+
+interface DesktopMenuLinkProps {
   path: string,
   text: string,
   isCurrentRoute: boolean
@@ -24,12 +36,40 @@ const menuItems: MenuLink[] = [
 
 export default function Navbar() {
 
+  const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+
+  const closeMobileMenuOnResize = () => {
+    if (window.innerWidth >= 768) {
+      setMobileMenuIsOpen(false);
+    }
+  };
+
+  // Add an event listener to window resize events
+  useEffect(() => {
+    window.addEventListener('resize', closeMobileMenuOnResize);
+    return () => {
+      window.removeEventListener('resize', closeMobileMenuOnResize);
+    };
+  }, []);
+
+
   return (
-    <nav className={`bg-[var(--background)] text-[var(--on-background)] p-8 fixed top-0 left-0 flex flex-row w-full items-center justify-between transition-colors`}>
-      <HomeLink />
-      <MobileMenu />
-      <DesktopMenu />
-    </nav>
+    <header>
+      <nav className={`p-8 bg-[var(--background)] text-[var(--on-background)] fixed top-0 left-0 w-full`}>
+        <div className="flex flex-row items-center justify-between w-full">
+          <HomeLink />
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden"
+            onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
+          >
+            {mobileMenuIsOpen ? "close" : "menu"}
+          </button>
+          <DesktopMenu />
+        </div>
+        <MobileMenu isOpen={mobileMenuIsOpen} setIsOpen={setMobileMenuIsOpen} />
+      </nav>
+    </header>
   )
 }
 
@@ -41,41 +81,32 @@ function HomeLink() {
   )
 }
 
-function MobileMenu() {
-  const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+function MobileMenu( { isOpen, setIsOpen }: MobileMenuProps) {
   const currentRoute = usePathname();
-
   return (
-    <div className="md:hidden">
-      <button 
-        onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
-      >
-        {mobileMenuIsOpen ? "close" : "menu"}
-      </button>
-      {mobileMenuIsOpen &&
-        <div className="bg-[var(--background)] text-[var(--on-background)] fixed p-8 top-0 left-0 w-full flex flex-col">
-          <div className="mb-8 w-full flex flex-row justify-between items-center">
-            <HomeLink />
-            <button 
-              onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
-            >
-              {mobileMenuIsOpen ? "close" : "menu"}
-            </button>    
-          </div>
+    <>
+      {isOpen &&
+        <div className="bg-[var(--background)] text-[var(--on-background)] relative p-8 top-0 left-0 w-full flex flex-col">
           {menuItems.map(({path, text}: MenuLink) => 
             <Fragment key={path}>
-              <MobileMenuLink path={path} text={text} isCurrentRoute={currentRoute === path} />
+              <MobileMenuLink 
+                path={path} 
+                text={text} 
+                isCurrentRoute={currentRoute === path} 
+                setMobileMenuIsOpen={setIsOpen}
+              />
             </Fragment>
           )}
         </div>
       }     
-    </div>
+    </>
   )
 }
 
-function MobileMenuLink( { path, text, isCurrentRoute }: MenuLinkProps) {
+function MobileMenuLink( { path, text, isCurrentRoute, setMobileMenuIsOpen }: MobileMenuLinkProps) {
   return (
     <Link 
+      onClick={() => setMobileMenuIsOpen(false)}
       className={`${isCurrentRoute ? "underline" : ""} text-3xl m-2 text-[var(--on-background)] py-2 hover:underline hover:underline-offset-2`}
       href={path}
     >
@@ -98,7 +129,7 @@ function DesktopMenu() {
   )
 }
 
-function DesktopMenuLink( { path, text, isCurrentRoute }: MenuLinkProps) {
+function DesktopMenuLink( { path, text, isCurrentRoute }: DesktopMenuLinkProps) {
   return (
     <Link 
       className={`${isCurrentRoute ? "underline underline-offset-2" : ""} text-[var(--on-background)] hover:underline hover:underline-offset-2`}
