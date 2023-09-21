@@ -1,32 +1,42 @@
 import fs from "fs";
 import { convertISOStringToDate } from "@/utils/date";
-import { PostMeta, PostSlug } from "@/types/blog";
+import { PostSlug, PostFrontmatter } from "@/types/blog";
+import { serialize } from "next-mdx-remote/serialize";
 
-async function getPostMeta(filename: string): Promise<PostMeta> {
-  const { meta }: { meta: PostMeta } = await import(`../../posts/${filename}`);
+async function getPostFrontmatter(filename: string): Promise<PostFrontmatter> {
+  const raw: string = fs.readFileSync(process.cwd() + "/posts/" + `${filename}`, 'utf-8');
+ 
+  // Serialize the MDX content
+  let { frontmatter }: { frontmatter: PostFrontmatter } = 
+  await serialize<Record<string, unknown>, PostFrontmatter>(raw, {
+    parseFrontmatter: true,
+  });
+
   const postSlug = filename.replace(/\.mdx$/, '');
-  const postMeta = { ...meta, slug: postSlug }
-  return postMeta;
+  frontmatter = { ...frontmatter, slug: postSlug }
+ 
+  // Return the serialized content
+  return frontmatter;
 }
 
-export async function getMostRecentPosts(): Promise<PostMeta[]> {
-  const posts: PostMeta[] = await getAllPosts();
+export async function getMostRecentPosts(): Promise<PostFrontmatter[]> {
+  const posts: PostFrontmatter[] = await getAllPosts();
 
   if (posts.length <= 3) {
     return posts;
   }
 
-  const threeMostRecentPosts: PostMeta[] = posts.slice(0, 3);
+  const threeMostRecentPosts: PostFrontmatter[] = posts.slice(0, 3);
   return threeMostRecentPosts;
 }
 
-export async function getAllPosts(): Promise<PostMeta[]> {
+export async function getAllPosts(): Promise<PostFrontmatter[]> {
   const files: string[] = fs.readdirSync(process.cwd() + "/posts/");
-  const posts: PostMeta[] = [];
+  const posts: PostFrontmatter[] = [];
   
   for (const filename of files) {
-    const postMeta: PostMeta = await getPostMeta(filename);
-    posts.push(postMeta);
+    const postFrontmatter: PostFrontmatter = await getPostFrontmatter(filename);
+    posts.push(postFrontmatter);
   }
 
   posts.sort((a, b) => {

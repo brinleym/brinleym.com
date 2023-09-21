@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { PostMeta } from "@/types/blog";
-// import Card from "./Card";
 import Date from "./Date";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import SurfaceVariantCard from "./card/SurfaceVariantCard";

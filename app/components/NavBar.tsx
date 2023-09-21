@@ -1,8 +1,7 @@
 'use client';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
-import { useState, Fragment, useEffect } from 'react';
-// import { createPortal } from 'react-dom';
+import { useState, Fragment } from 'react';
 
 interface MenuLinkProps {
   path: string,
@@ -77,10 +76,10 @@ function MobileMenu() {
 function MobileMenuLink( { path, text, isCurrentRoute }: MenuLinkProps) {
   return (
     <Link 
-      className="text-3xl m-2 text-[var(--on-background)] py-2 hover:underline hover:underline-offset-2"
+      className={`${isCurrentRoute ? "underline" : ""} text-3xl m-2 text-[var(--on-background)] py-2 hover:underline hover:underline-offset-2`}
       href={path}
     >
-      <h1>{isCurrentRoute ? `[ ${text} ]` : text}</h1>
+      <h1>{text}</h1>
     </Link>
   )
 }
@@ -89,7 +88,7 @@ function DesktopMenu() {
   const currentRoute = usePathname();
 
   return (
-    <div className="hidden md:block md:flex gap-8">
+    <div className="hidden md:flex gap-8">
       {menuItems.map(({path, text}: MenuLink) => 
         <Fragment key={path}>
           <DesktopMenuLink path={path} text={text} isCurrentRoute={currentRoute === path}/>
@@ -102,10 +101,10 @@ function DesktopMenu() {
 function DesktopMenuLink( { path, text, isCurrentRoute }: MenuLinkProps) {
   return (
     <Link 
-      className={`text-[var(--on-background)] hover:underline hover:underline-offset-2`}
+      className={`${isCurrentRoute ? "underline underline-offset-2" : ""} text-[var(--on-background)] hover:underline hover:underline-offset-2`}
       href={path}
     >
-      {isCurrentRoute ? `[ ${text} ]` : text}
+      {text}
     </Link>
   )
 }
