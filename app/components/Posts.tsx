@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { PostMeta } from "@/types/blog";
+import { PostFrontmatter } from "@/types/blog";
 import Date from "./Date";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import SurfaceVariantCard from "./card/SurfaceVariantCard";
 
-export default function Posts({ posts }: { posts: PostMeta[] }) {
+export default function Posts({ posts }: { posts: PostFrontmatter[] }) {
   return (
     <ul className="flex flex-col gap-3">
-      {posts.map(({title, date, slug}: PostMeta) => {
+      {posts.map(({title, date, slug}: PostFrontmatter) => {
         return (
           <li key={title}>
             <SurfaceVariantCard condensed={true} additionalStyles="group" link={`/blog/${slug}`}>

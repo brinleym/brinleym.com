@@ -1,7 +1,7 @@
 import { getMostRecentPosts } from "@/utils/blog";
 import { getTopProjects } from "@/utils/projects";
 import { PostFrontmatter } from "@/types/blog";
-import { ProjectMeta, ProjectFrontmatter } from "@/types/projects";
+import { ProjectFrontmatter } from "@/types/projects";
 import Posts from "./components/Posts";
 import Projects from "./components/Projects";
 import Section from "./components/Section";
@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export default async function Home() {
   const mostRecentPosts: PostFrontmatter[] = await getMostRecentPosts();
-  const topProjects: ProjectMeta[] = await getTopProjects();
+  const topProjects: ProjectFrontmatter[] = await getTopProjects();
   return (
     <>
       <PageHeading>Welcome</PageHeading>
