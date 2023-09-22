@@ -86,11 +86,10 @@ export default function RootLayout({
         ${gloock.variable}
         ${marcellus.variable}
       `}>
-        <main className="mt-24 p-8 max-w-4xl mx-auto">
+        <Navbar />
+        <main className="z-0 mt-24 p-8 max-w-4xl mx-auto">
           {children}
         </main>
-        {/* nav rendered below main to ensure it has higher stacking context */}
-        <Navbar />
       </body>
     </html>
   )

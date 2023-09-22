@@ -44,7 +44,6 @@ export default function Navbar() {
     }
   };
 
-  // Add an event listener to window resize events
   useEffect(() => {
     window.addEventListener('resize', closeMobileMenuOnResize);
     return () => {
@@ -54,22 +53,20 @@ export default function Navbar() {
 
 
   return (
-    <header>
-      <nav className={`p-8 bg-[var(--background)] text-[var(--on-background)] fixed top-0 left-0 w-full`}>
-        <div className="flex flex-row items-center justify-between w-full">
-          <HomeLink />
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden"
-            onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
-          >
-            {mobileMenuIsOpen ? "close" : "menu"}
-          </button>
-          <DesktopMenu />
-        </div>
-        <MobileMenu isOpen={mobileMenuIsOpen} setIsOpen={setMobileMenuIsOpen} />
-      </nav>
-    </header>
+    <nav className={`z-50 p-8 bg-[var(--background)] text-[var(--on-background)] fixed top-0 left-0 w-full`}>
+      <div className="flex flex-row items-center justify-between w-full">
+        <HomeLink />
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden"
+          onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
+        >
+          {mobileMenuIsOpen ? "close" : "menu"}
+        </button>
+        <DesktopMenu />
+      </div>
+      <MobileMenu isOpen={mobileMenuIsOpen} setIsOpen={setMobileMenuIsOpen} />
+    </nav>
   )
 }
 
@@ -86,18 +83,18 @@ function MobileMenu( { isOpen, setIsOpen }: MobileMenuProps) {
   return (
     <>
       {isOpen &&
-        <div className="bg-[var(--background)] text-[var(--on-background)] relative p-8 top-0 left-0 w-full flex flex-col">
+        <ul className="py-8 bg-[var(--background)] text-[var(--on-surface-variant)] relative top-0 left-0 w-full flex flex-col gap-2">
           {menuItems.map(({path, text}: MenuLink) => 
-            <Fragment key={path}>
+            <li key={path}>
               <MobileMenuLink 
                 path={path} 
                 text={text} 
                 isCurrentRoute={currentRoute === path} 
                 setMobileMenuIsOpen={setIsOpen}
               />
-            </Fragment>
+            </li>
           )}
-        </div>
+        </ul>
       }     
     </>
   )
@@ -107,7 +104,7 @@ function MobileMenuLink( { path, text, isCurrentRoute, setMobileMenuIsOpen }: Mo
   return (
     <Link 
       onClick={() => setMobileMenuIsOpen(false)}
-      className={`${isCurrentRoute ? "underline" : ""} text-3xl m-2 text-[var(--on-background)] py-2 hover:underline hover:underline-offset-2`}
+      className={`${isCurrentRoute ? "underline" : ""} text-3xl text-[var(--on-background)] hover:underline hover:underline-offset-2`}
       href={path}
     >
       <h1>{text}</h1>

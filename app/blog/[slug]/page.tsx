@@ -30,9 +30,9 @@ export default async function BlogPost({ params }: { params: PostSlug }) {
   const blogTitle: string = mdxSource.frontmatter.title;
   const date: string = mdxSource.frontmatter?.date ? mdxSource.frontmatter.date : "";
   return (
-    <article>
+    <article className="max-w-[80ch] text-lg">
       <h1 className="text-5xl my-2">{blogTitle}</h1>
-      {date.length > 0 && <Date dateString={date} additionalStyles="inline-block text-lg mb-8" />}
+      {date.length > 0 && <Date dateString={date} additionalStyles="inline-block text-lg mb-4" />}
       <CustomMDXRenderer mdxSource={mdxSource} />
     </article>
   )
