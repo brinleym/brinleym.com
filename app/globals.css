@@ -25,6 +25,7 @@
   --surface-variant: #f2dde2;
   --on-surface-variant: #514347;
   --outline: #837377;
+  --hover-background: #faeeef;
 }
 
 /* Dark Theme */
@@ -51,6 +52,7 @@
     --surface-variant: #514347;
     --on-surface-variant: #d5c2c6;
     --outline: #9e8c90;
+    --hover-background: #3a2d30;
   }
 }
 

@@ -1,11 +1,11 @@
-import { ProjectMeta } from "@/types/projects";
+import { ProjectFrontmatter } from "@/types/projects";
 import SurfaceVariantCard from "./card/SurfaceVariantCard";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 
-export default function Projects({ projects }: { projects: ProjectMeta[] }) {
+export default function Projects({ projects }: { projects: ProjectFrontmatter[] }) {
   return (
     <ul className="flex flex-col gap-3">
-      {projects.map(({ title, description, demo, slug }: ProjectMeta) => {
+      {projects.map(({ title, description, demo, slug }: ProjectFrontmatter) => {
         return (
           <li key={title} className="">
             <SurfaceVariantCard condensed={true} additionalStyles="group" link={`/projects/${slug}`}>
