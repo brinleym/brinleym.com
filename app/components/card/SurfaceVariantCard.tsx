@@ -9,8 +9,8 @@ export default function SurfaceVariantCard({ children, link="", condensed=false,
       condensed={condensed}
       backgroundColor="bg-[var(--surface-variant)]"
       textColor="text-[var(--on-surface-variant)]"
-      hoverBackgroundColor={`${link.length > 0 ? "hover:bg-[var(--secondary-container)]": ""}`}
-      hoverTextColor={`${link.length > 0 ? "hover:text-[var(--on-secondary-container)]": ""}`}
+      hoverBackgroundColor={`${link.length > 0 ? "hover:bg-[var(--hover-surface-variant-background)]": ""}`}
+      hoverTextColor={`${link.length > 0 ? "hover:text-[var(--on-surface-variant)]": ""}`}
       additionalStyles={additionalStyles}  
     />
   )

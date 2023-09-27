@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { PostFrontmatter } from "@/types/blog";
 import Date from "./Date";
@@ -6,20 +7,28 @@ import SurfaceVariantCard from "./card/SurfaceVariantCard";
 
 export default function Posts({ posts }: { posts: PostFrontmatter[] }) {
   return (
-    <ul className="flex flex-col gap-3">
+    <ul className="flex flex-col divide-y divide-[var(--outline)]">
       {posts.map(({title, date, slug}: PostFrontmatter) => {
         return (
-          <li key={title}>
-            <SurfaceVariantCard condensed={true} additionalStyles="group" link={`/blog/${slug}`}>
-              <div className="flex flex-col md:flex-row justify-between md:items-center">
-                <h3 className="text-lg">{title}</h3>
-                <div className="flex flex-row justify-end gap-3">
-                  <p className="text-sm"><Date dateString={date} /></p>
-                  <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-all" />
-                </div>
+          <Fragment key={title}>
+          <Link 
+            className="group py-4 px-2 flex justify-between items-center hover:bg-[var(--hover-background)]"
+            href={`/blog/${slug}`}
+          >
+            <div>
+              <h3 className="text-2xl group-hover:underline">{title}</h3>
+              <p className="block md:hidden text-sm"><Date dateString={date} /></p>
+            </div>
+            <div className="flex flex-row justify-end items-center gap-3">
+              <p className="hidden md:block text-sm"><Date dateString={date} /></p>
+              <div 
+                className="rounded-full p-1 hover:bg-[var(--hover-background)] group-hover:translate-x-1 transition-all"
+              >
+                <ArrowRightIcon className="w-5 h-5" />
               </div>
-            </SurfaceVariantCard>
-          </li>
+            </div>
+          </Link>
+          </Fragment>
         )
       })}
     </ul>

@@ -1,44 +1,48 @@
+"use client"
 import { useState, Fragment } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 
-export default function Paginator({ items }: { items: React.ReactNode[] }) {
+export default function Paginator({ items, startPage=0 }: { items: React.ReactNode[], startPage?: number }) {
   if (items.length === 0) {
+    return <></>
+  }
+  if (items.length <= startPage)  {
     return <></>
   }
 
   const totalItems: number = items.length;
-  const [currPage, setCurrPage] = useState(0);
+  const [currPage, setCurrPage] = useState(startPage);
 
   return (
     <>
-      <div className="h-60 flex justify-between items-center gap-6">
+      <div className="h-60 flex justify-between items-center gap-2 md:gap-6">
         {currPage === 0 ?
           <button 
-            className="rounded-full p-1 opacity-30"
+            className="rounded-full p-1 opacity-40"
             disabled
           >
-            <ArrowLeftIcon className="w-6 h-6" />
+            <ArrowLeftIcon className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         : <button 
-            className="rounded-full p-1 hover:bg-[var(--hover-background)] active:bg-[var(--secondary-container)] active:text-[var(--on-secondary-container)] transition-colors"
+            className="rounded-full p-1 hover:bg-[var(--hover-background)] transition-colors"
             onClick={() => {setCurrPage(currPage - 1)}}
           >
-            <ArrowLeftIcon className="w-6 h-6" />
+            <ArrowLeftIcon className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         }
         <div className="rounded-lg max-h-full flex-grow overflow-y-auto">{items[currPage]}</div>
         {currPage === totalItems - 1 ?
           <button 
-            className="rounded-full p-1 opacity-30"
+            className="rounded-full p-1 opacity-40"
             disabled
           >
-            <ArrowRightIcon className="w-6 h-6" />
+            <ArrowRightIcon className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         : <button 
-            className="rounded-full p-1 hover:bg-[var(--hover-background)] active:bg-[var(--secondary-container)] active:text-[var(--on-secondary-container)] transition-colors"
+            className="rounded-full p-1 hover:bg-[var(--hover-background)] transition-colors"
             onClick={() => {setCurrPage(currPage + 1)}}
           >
-            <ArrowRightIcon className="w-6 h-6" />
+            <ArrowRightIcon className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         }
       </div>
@@ -50,13 +54,13 @@ export default function Paginator({ items }: { items: React.ReactNode[] }) {
                 <button 
                   onClick={() => {setCurrPage(idx)}}
                   key={idx} 
-                  className={`bg-[var(--secondary-container)] rounded-full w-5 h-5 border border-[var(--outline)]`}>
+                  className={`bg-[var(--secondary)] w-5 h-2 border border-[var(--outline)]`}>
                 </button>
                 :
                 <button 
                   onClick={() => {setCurrPage(idx)}}
                   key={idx} 
-                  className={`rounded-full w-5 h-5 border border-[var(--outline)] hover:bg-[var(--hover-background)]`}>
+                  className={`w-5 h-2 border border-[var(--outline)] hover:bg-[var(--hover-background)]`}>
                 </button>
               }
             </Fragment>

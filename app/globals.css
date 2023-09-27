@@ -26,6 +26,7 @@
   --on-surface-variant: #514347;
   --outline: #837377;
   --hover-background: #faeeef;
+  --hover-surface-variant-background: #d5c2c6;
 }
 
 /* Dark Theme */
@@ -47,24 +48,25 @@
     --on-error: #690005;
     --error-container: #93000a;
     --on-error-container: #ffdad6;
-    --background: #201a1b;
+    --background: rgb(32, 26, 27);
     --on-background: #ebe0e1;
     --surface-variant: #514347;
     --on-surface-variant: #d5c2c6;
     --outline: #9e8c90;
     --hover-background: #3a2d30;
+    --hover-surface-variant-background: #6a5b5e;
   }
 }
 
 body {
-  /* background: linear-gradient(174deg, var(--background) 70%, var(--surface-variant) 100%) fixed; */
+  /*background: linear-gradient(-190deg, var(--background) 70%, var(--secondary-container) 100%) fixed;*/
   background: var(--background);
   color: var(--on-background);
-  font-family: var(--font-inconsolata);
+  font-family: var(--font-jost);
 }
 
 
-h1, h2 {
+h1, h2, h3 {
   font-family: var(--font-space-grotesk);
 }
 

@@ -8,6 +8,9 @@ import { Exo } from 'next/font/google';
 import { Lekton } from 'next/font/google';
 import { Gloock } from 'next/font/google';
 import { Marcellus } from 'next/font/google';
+import { Overpass_Mono } from 'next/font/google';
+import { Space_Mono } from 'next/font/google';
+import { Jost } from 'next/font/google';
 import Navbar from './components/NavBar';
 
 /* Headings font */
@@ -63,6 +66,25 @@ const marcellus = Marcellus({
   display: "swap", 
 });
 
+const overpassMono = Overpass_Mono({
+  subsets: ["latin"],
+  variable: "--font-overpass-mono",
+  display: "swap", 
+});
+
+const spaceMono = Space_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-space-mono",
+  display: "swap", 
+});
+
+const jost = Jost({
+  subsets: ["latin"],
+  variable: "--font-jost",
+  display: "swap", 
+});
+
 
 export const metadata: Metadata = {
   title: 'Brinley Macnamara',
@@ -85,6 +107,9 @@ export default function RootLayout({
         ${lekton.variable}
         ${gloock.variable}
         ${marcellus.variable}
+        ${overpassMono.variable}
+        ${spaceMono.variable}
+        ${jost.variable}
       `}>
         <Navbar />
         <main className="z-0 mt-24 p-8 max-w-4xl mx-auto">

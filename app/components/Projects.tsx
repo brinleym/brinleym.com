@@ -1,23 +1,26 @@
+import { Fragment } from "react";
+import Link from "next/link";
 import { ProjectFrontmatter } from "@/types/projects";
 import SurfaceVariantCard from "./card/SurfaceVariantCard";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 export default function Projects({ projects }: { projects: ProjectFrontmatter[] }) {
   return (
-    <ul className="flex flex-col gap-3">
+    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
       {projects.map(({ title, description, demo, slug }: ProjectFrontmatter) => {
         return (
-          <li key={title} className="">
-            <SurfaceVariantCard condensed={true} additionalStyles="group" link={`/projects/${slug}`}>
-              <div className="flex flex-col md:flex-row justify-between md:items-center">
-                <h3 className="text-lg">{title}</h3>
-                <div className="flex flex-row justify-end gap-3">
-                  <p className="text-sm">{description}</p>
-                  <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-all" />
-                </div>
+          <Fragment key={title}>
+            <Link
+              href={`/projects/${slug}`}
+              className="group flex flex-col p-4 shadow rounded-lg border border-[var(--outline)] hover:bg-[var(--hover-background)]"
+            >
+              <h3 className="group-hover:underline text-2xl">{title}</h3>
+              <div className="flex flex-row justify-between items-center">
+                <p>{description}</p>
+                <ArrowRightIcon className="w-5 h-5 -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
               </div>
-            </SurfaceVariantCard>  
-          </li>
+            </Link>
+          </Fragment>
         )
       })}
     </ul>
