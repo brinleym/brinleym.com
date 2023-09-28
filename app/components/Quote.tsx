@@ -1,5 +1,7 @@
-export default function Quote({ children }: {children: React.ReactNode}) {
+export default function Quote({ children }: { children: React.ReactNode }) {
   return (
-    <p className="m-4 quote">{children}</p>
+    <blockquote className="quote text-[var(--secondary)] relative my-8 mx-2">
+      {children}
+    </blockquote>
   )
 }

@@ -3,12 +3,10 @@ import { useState, useEffect, Fragment } from "react";
 import PageHeading from "@/app/components/PageHeading";
 import Section from "@/app/components/Section";
 import SectionHeading from "@/app/components/SectionHeading";
-import Accordian from "@/app/components/Accordian";
-import Paginator from "@/app/components/Paginator";
 import ServiceCard, { ServiceCardContent } from "@/app/components/card/ServiceCard";
 import { ListItem as ThreeLineResponsiveListItem } from "@/app/components/list/ThreeLineResponsiveList";
 import ThreeLineResponsiveList from "@/app/components/list/ThreeLineResponsiveList";
-import Chip from "@/app/components/Chip";
+import Reviews, { Review } from "@/app/components/list/Reviews";
 import { ClipboardDocumentIcon, ClipboardDocumentCheckIcon } from "@heroicons/react/24/solid";
 
 const email: string = "brinley.macnamara@gmail.com";
@@ -41,7 +39,7 @@ const services: ServiceCardContent[] = [
   {
     image: "/landing-page.png",
     headline: "Web Application",
-    supportingText: "A bespoke web application that maxmizes usability,\
+    supportingText: "A bespoke web app that maxmizes usability,\
     security, and performance",
     details: {
       timeframe: "2-3 months",
@@ -53,7 +51,8 @@ const services: ServiceCardContent[] = [
   {
     image: "/landing-page.png",
     headline: "Technical Writing",
-    supportingText: "Highly original, informational technical writing",
+    supportingText: "Highly original, informational technical writing tailored \
+    to any level of expertise",
     details: {
       timeframe: "1-2 days"
     }
@@ -94,34 +93,39 @@ const processSteps: ThreeLineResponsiveListItem[] = [
     your customers can immediately start using it"
   },
 ];
-const reviews: React.ReactNode[] = [
-  <p>
-    Brinley was professional, insightful, and wonderful to work with. 
-    She was always responsive and worked quickly to implement my changes on 
-    this project. She brought a breath of fresh air to the project and 
-    provided more than was asked in both guidance and ideas. I would highly 
-    recommend Brinley for any project, big or small. She will approach your 
-    project with commitment and a true desire to ensure you are absolutely 
-    happy with the outcome. - Mel
-  </p>,
-  <p>
-    Brinley was responsive, available, professional and open minded. She is 
-    genuine and wants to provide you a beautiful product for you. I would 
-    highly recommend her for your site. Not to mention she takes great notes! 
-    - Diane
-  </p>,
-  <p>
-    It was a pleasure to hire Brinley to build the website for my blog. 
-    With the few pieces of information that I provided her, she was able to 
-    execute and take my vision from concept to functional product in less than 
-    a week. The end result was a highly performant website with a modern style. 
-    She also wrote accompanying documentation so that I would be aware of how 
-    the site was hosted, how to migrate the site if I wanted to host it 
-    elsewhere, and how to quickly add new blog posts using markdown. I would 
-    definitely hire her again for any other frontend work. She is diligent and 
-    she strives to exceed expectations throughout the development process. 
-    - Alex
-  </p>
+const reviews: Review[] = [
+  {
+    reviewer: "Mel",
+    numStars: 5, 
+    review: "Brinley was professional, insightful, and wonderful to work with. \
+    She was always responsive and worked quickly to implement my changes on \
+    this project. She brought a breath of fresh air to the project and \
+    provided more than was asked in both guidance and ideas. I would highly \
+    recommend Brinley for any project, big or small. She will approach your \
+    project with commitment and a true desire to ensure you are absolutely \
+    happy with the outcome."
+  },
+  {
+    reviewer: "Diane",
+    numStars: 5, 
+    review: "Brinley was responsive, available, professional and open minded. \
+    She is genuine and wants to provide you a beautiful product for you. \
+    I would highly recommend her for your site. Not to mention she takes great \
+    notes!"
+  },
+  {
+    reviewer: "Alex",
+    numStars: 5, 
+    review: "It was a pleasure to hire Brinley to build the website for my \
+    blog. With the few pieces of information that I provided her, she was able \
+    to execute and take my vision from concept to functional product in less \
+    than a week. The end result was a highly performant website with a modern \
+    style. She also wrote accompanying documentation so that I would be aware \
+    of how the site was hosted, how to migrate the site if I wanted to host it \
+    elsewhere, and how to quickly add new blog posts using markdown. I would \
+    definitely hire her again for any other frontend work. She is diligent and \
+    she strives to exceed expectations throughout the development process."
+  }
 ];
 
 export default function Freelance() {
@@ -226,7 +230,7 @@ export default function Freelance() {
       </Section>
       <Section>
         <SectionHeading>Customer Reviews</SectionHeading>
-        {/* <Paginator items={reviews} startPage={1} /> */}
+        <Reviews reviews={reviews} />
       </Section>
     </>
   )
