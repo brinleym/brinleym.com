@@ -30,7 +30,6 @@
 }
 
 /* Dark Theme */
-/*
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #ffb0c8;
@@ -58,7 +57,7 @@
     --hover-surface-variant-background: #6a5b5e;
   }
 }
-*/
+
 body {
   /*background: linear-gradient(-190deg, var(--background) 70%, var(--secondary-container) 100%) fixed;*/
   background: var(--background);

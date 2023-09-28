@@ -8,7 +8,6 @@ import Section from "./components/Section";
 import PageHeading from "./components/PageHeading";
 import SectionHeading from "./components/SectionHeading";
 import SecondaryButton from "./components/SecondaryButton";
-import Link from "next/link";
 
 export default async function Home() {
   const mostRecentPosts: PostFrontmatter[] = await getMostRecentPosts();
@@ -19,14 +18,14 @@ export default async function Home() {
       <Section>
         <div className="flex items-center justify-between">
           <SectionHeading>Recent Posts</SectionHeading>
-          <Link href="/blog"><SecondaryButton>View all</SecondaryButton></Link>
+          <SecondaryButton text="View all" link="/blog" />
         </div>
         <Posts posts={mostRecentPosts}/>
       </Section>
       <Section>
         <div className="flex items-center justify-between">
           <SectionHeading>Top Projects</SectionHeading>
-          <Link href="/projects"><SecondaryButton>View all</SecondaryButton></Link>
+          <SecondaryButton text="View all" link="/projects" />
         </div>
         <Projects projects={topProjects} />
       </Section>

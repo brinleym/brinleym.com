@@ -2,8 +2,10 @@
 import { PostFrontmatter } from "@/types/blog";
 import { ProjectFrontmatter } from "@/types/projects";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import SecondaryButton from "@/app/components/SecondaryButton";
 import Quote from "@/app/components/Quote";
 import Callout from "@/app/components/Callout";
+import Chip from "@/app/components/Chip";
 
 type Frontmatter = PostFrontmatter | ProjectFrontmatter;
 
@@ -17,8 +19,10 @@ const components = {
   ol: (props) => <ol className="mx-6 my-1 list-decimal" {...props}/>,
   li: (props) => <li className="" {...props}/>,
   code: (props) => <code className="text-base py-0.5 px-1 bg-[var(--surface-variant)] text-[var(--on-surface-variant)] border border-[var(--outline)] rounded" {...props} />,
+  SecondaryButton,
   Quote,
-  Callout
+  Callout,
+  Chip
 }
 
 export default function CustomMDXRenderer({ mdxSource }: { mdxSource: MDXRemoteSerializeResult<Record<string, unknown>, Frontmatter>}) {
