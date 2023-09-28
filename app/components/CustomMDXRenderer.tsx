@@ -2,18 +2,21 @@
 import { PostFrontmatter } from "@/types/blog";
 import { ProjectFrontmatter } from "@/types/projects";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import Quote from "@/app/components/Quote";
 
 type Frontmatter = PostFrontmatter | ProjectFrontmatter;
 
 const components = { 
   h1: (props) => <h1 className="text-5xl my-4" {...props} />,
-  h2: (props) => <h2 className="text-2xl my-1" {...props} />,
+  h2: (props) => <h2 className="text-3xl my-4" {...props} />,
+  h3: (props) => <h3 className="text-2xl my-4" {...props} />,
   p: (props) => <p {...props} />,
   a: (props) => <a className="underline" target="_blank" {...props}/>,
-  ul: (props) => <ul className="px-6 py-1 list-disc" {...props}/>,
-  ol: (props) => <ol className="px-4 py-2 list-decimal" {...props}/>,
+  ul: (props) => <ul className="mx-6 my-1 list-disc" {...props}/>,
+  ol: (props) => <ol className="mx-6 my-1 list-decimal" {...props}/>,
   li: (props) => <li className="" {...props}/>,
-  code: (props) => <code className="text-base py-0.5 px-1 bg-[var(--surface-variant)] text-[var(--on-surface-variant)] border border-[var(--outline)] rounded" {...props} />
+  code: (props) => <code className="text-base py-0.5 px-1 bg-[var(--surface-variant)] text-[var(--on-surface-variant)] border border-[var(--outline)] rounded" {...props} />,
+  Quote
 }
 
 export default function CustomMDXRenderer({ mdxSource }: { mdxSource: MDXRemoteSerializeResult<Record<string, unknown>, Frontmatter>}) {
