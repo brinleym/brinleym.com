@@ -11,7 +11,6 @@ export default function ThreeLineResponsiveList({ items }: { items: ListItem[] }
   return (
     <ul className="flex flex-col divide-y divide-[var(--outline)]">
       {items.map(({ headline, supportingText }: ListItem): React.ReactNode => {
-        const [isOpenOnMobile, setIsOpenOnMobile] = useState(false);
         return (
           <Fragment key={headline}>
             <ListItem headline={headline} supportingText={supportingText} />
