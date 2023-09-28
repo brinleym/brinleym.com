@@ -4,7 +4,6 @@ import BaseCard from "./BaseCard";
 export default function BackgroundCard({ children, link="", condensed=false, additionalStyles=""}: CardProps) {
   return (
     <BaseCard 
-      children={children}
       link={link}
       condensed={condensed}
       backgroundColor="bg-[var(--background)]"
@@ -12,6 +11,6 @@ export default function BackgroundCard({ children, link="", condensed=false, add
       hoverBackgroundColor={`${link.length > 0 ? "hover:bg-[var(--secondary-container)]": ""}`}
       hoverTextColor={`${link.length > 0 ? "hover:text-[var(--on-secondary-container)]": ""}`}
       additionalStyles={additionalStyles}  
-    />
+    >{children}</BaseCard>
   )
 }

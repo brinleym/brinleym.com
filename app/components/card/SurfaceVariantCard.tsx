@@ -4,7 +4,6 @@ import BaseCard from "./BaseCard";
 export default function SurfaceVariantCard({ children, link="", condensed=false, additionalStyles=""}: CardProps) {
   return (
     <BaseCard 
-      children={children}
       link={link}
       condensed={condensed}
       backgroundColor="bg-[var(--surface-variant)]"
@@ -12,6 +11,8 @@ export default function SurfaceVariantCard({ children, link="", condensed=false,
       hoverBackgroundColor={`${link.length > 0 ? "hover:bg-[var(--hover-surface-variant-background)]": ""}`}
       hoverTextColor={`${link.length > 0 ? "hover:text-[var(--on-surface-variant)]": ""}`}
       additionalStyles={additionalStyles}  
-    />
+    >
+      {children}
+    </BaseCard>
   )
 }
