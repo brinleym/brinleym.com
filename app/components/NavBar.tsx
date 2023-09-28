@@ -30,8 +30,7 @@ const menuItems: MenuLink[] = [
   { path: "/", text: "Home" },
   { path: "/freelance", text: "Freelance" },
   { path: "/projects", text: "Projects" },
-  { path: "/blog", text: "Blog" },
-  { path: "/misc", text: "Misc." },
+  { path: "/blog", text: "Blog" }
 ]
 
 export default function Navbar() {
