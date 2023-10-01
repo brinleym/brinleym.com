@@ -40,7 +40,7 @@ export default function ServiceCard
         <div className="border-b border-[var(--outline)]"></div>
         <div className="pt-4 flex flex-col gap-2">
           <div className="flex flex-col">
-            <p className="text-lg">Timeframe</p>
+            <p className="text-lg">Estimated Timeframe</p>
             <Chip>{timeframe}</Chip>
           </div>
           {techStack.length > 0 &&

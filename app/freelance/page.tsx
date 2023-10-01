@@ -54,7 +54,7 @@ const services: ServiceCardContent[] = [
     supportingText: "Highly original, informational technical writing tailored \
     to any level of expertise",
     details: {
-      timeframe: "1-2 days"
+      timeframe: "1-7 days"
     }
   },
   {
