@@ -36,12 +36,23 @@ const menuItems: MenuLink[] = [
 export default function Navbar() {
 
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+  const [scrolledOnDesktop, setScrolledOnDesktop] = useState(false);
 
   const closeMobileMenuOnResize = () => {
     if (window.innerWidth >= 768) {
       setMobileMenuIsOpen(false);
+      // setScrolledOnDesktop(false);
     }
   };
+
+  const recolorDesktopMenuWhenScrolled = () => {
+    if (window.scrollY > 10) {
+      setScrolledOnDesktop(true);
+    }
+    else {
+      setScrolledOnDesktop(false);
+    }
+  }
 
   useEffect(() => {
     window.addEventListener('resize', closeMobileMenuOnResize);
@@ -50,9 +61,15 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('scroll', recolorDesktopMenuWhenScrolled);
+    return () => {
+      window.removeEventListener('scroll', recolorDesktopMenuWhenScrolled);
+    }
+  }, []);
 
   return (
-    <nav className={`z-50 p-8 bg-[var(--background)] text-[var(--on-background)] fixed top-0 left-0 w-full`}>
+    <nav className={`z-50 p-8 fixed top-0 left-0 w-full ${scrolledOnDesktop || mobileMenuIsOpen ? "bg-[var(--background-variant)] shadow" : "bg-[var(--background)]"} transition-colors duration-300`}>
       <div className="flex flex-row items-center justify-between w-full">
         <HomeLink />
         {/* Mobile Menu Button */}
@@ -82,7 +99,7 @@ function MobileMenu( { isOpen, setIsOpen }: MobileMenuProps) {
   return (
     <>
       {isOpen &&
-        <ul className="py-8 bg-[var(--background)] text-[var(--on-surface-variant)] relative top-0 left-0 w-full flex flex-col gap-2">
+        <ul className="py-8 relative top-0 left-0 w-full flex flex-col gap-2">
           {menuItems.map(({path, text}: MenuLink) => 
             <li key={path}>
               <MobileMenuLink 
