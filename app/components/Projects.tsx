@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { ProjectFrontmatter } from "@/types/projects";
-import SurfaceVariantCard from "./card/SurfaceVariantCard";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 export default function Projects({ projects }: { projects: ProjectFrontmatter[] }) {
