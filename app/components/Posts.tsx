@@ -3,7 +3,6 @@ import Link from "next/link";
 import { PostFrontmatter } from "@/types/blog";
 import Date from "./Date";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import SurfaceVariantCard from "./card/SurfaceVariantCard";
 
 export default function Posts({ posts }: { posts: PostFrontmatter[] }) {
   return (
