@@ -32,12 +32,17 @@ export async function getMostRecentPosts(): Promise<PostFrontmatter[]> {
 
 export async function getAllPosts(): Promise<PostFrontmatter[]> {
   const files: string[] = fs.readdirSync(process.cwd() + "/posts/");
-  const posts: PostFrontmatter[] = [];
+  let posts: PostFrontmatter[] = [];
   
   for (const filename of files) {
     const postFrontmatter: PostFrontmatter = await getPostFrontmatter(filename);
     posts.push(postFrontmatter);
   }
+
+  // filter out draft posts
+  posts = posts.filter((post) => {
+    return post?.draft ? !post.draft : true;
+  });
 
   posts.sort((a, b) => {
     const aDate: Date = convertISOStringToDate(a.date);
@@ -49,8 +54,18 @@ export async function getAllPosts(): Promise<PostFrontmatter[]> {
   return posts;
 }
 
-export function getPostSlugs(): PostSlug[] {
-  const filenames: string[] = fs.readdirSync(process.cwd() + "/posts/");
+export async function getPostSlugs(): Promise<PostSlug[]> {
+  let filenames: string[] = fs.readdirSync(process.cwd() + "/posts/");
+
+  async function filterFileNames(filenames: string[]) {
+    const newFilenames = filenames.filter(async (filename) => {
+      const postFrontmatter: PostFrontmatter = await getPostFrontmatter(filename);
+      return postFrontmatter?.draft ? !postFrontmatter.draft : true;
+    });
+    return newFilenames;
+  }
+  
+  filenames = await filterFileNames(filenames);
   const slugs: PostSlug[] = filenames.map((filename): PostSlug => { return { slug: filename.replace(/\.mdx$/, '') } });
   return slugs;
 }

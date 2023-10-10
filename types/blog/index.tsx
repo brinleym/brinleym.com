@@ -5,5 +5,6 @@ export interface PostSlug {
 export interface PostFrontmatter {
   title: string,
   date: string,
-  slug?: string
+  slug?: string,
+  draft?: boolean
 }
