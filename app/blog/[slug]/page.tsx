@@ -8,7 +8,7 @@ import Date from "@/app/components/Date";
 
 /* Create routes based on post filenames */
 export async function generateStaticParams(): Promise<PostSlug[]> {
-  return getPostSlugs();
+  return await getPostSlugs();
 }
 
 
