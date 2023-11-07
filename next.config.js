@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     mdxRs: true,
   },
+  optimizeFonts: false
 }
  
 const withMDX = require('@next/mdx')()
