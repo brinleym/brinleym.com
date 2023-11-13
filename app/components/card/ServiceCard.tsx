@@ -1,5 +1,4 @@
 import { useState, Fragment } from "react";
-import Image from "next/image";
 import Chip from "@/app/components/Chip";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
 
@@ -9,7 +8,6 @@ export interface ServiceCardDetails {
 }
 
 export interface ServiceCardContent {
-  image: string,
   headline: string,
   supportingText: string,
   details: ServiceCardDetails
@@ -17,7 +15,7 @@ export interface ServiceCardContent {
 
 export default function ServiceCard
 (
-  { image, headline, supportingText, details }: ServiceCardContent
+  { headline, supportingText, details }: ServiceCardContent
 ) {
   const [ isOpen, setIsOpen ] = useState(false);
 
@@ -36,25 +34,25 @@ export default function ServiceCard
         </div>
       </div>
       {isOpen &&
-      <div className="pt-4">
-        <div className="border-b border-[var(--outline)]"></div>
-        <div className="pt-4 flex flex-col gap-2">
-          <div className="flex flex-col">
-            <p className="text-lg">Estimated Timeframe</p>
-            <Chip>{timeframe}</Chip>
-          </div>
-          {techStack.length > 0 &&
+        <div className="pt-4">
+          <div className="border-b border-[var(--outline)]"></div>
+          <div className="pt-4 flex flex-col gap-2">
             <div className="flex flex-col">
-              <p className="text-lg">Tech Stack</p>
-              <div className="flex flex-wrap gap-1">
-                {techStack.map((item) => {
-                  return <Fragment key={item}><Chip>{item}</Chip></Fragment>
-                })}
-              </div>
+              <p className="text-lg">Estimated Timeframe</p>
+              <Chip>{timeframe}</Chip>
             </div>
-          }
+            {techStack.length > 0 &&
+              <div className="flex flex-col">
+                <p className="text-lg">Tech Stack</p>
+                <div className="flex flex-wrap gap-1">
+                  {techStack.map((item) => {
+                    return <Fragment key={item}><Chip>{item}</Chip></Fragment>
+                  })}
+                </div>
+              </div>
+            }
+          </div>
         </div>
-      </div>
       }
     </div>
   )

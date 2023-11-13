@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 export default function ProjectArticleLayout({
   children, // will be a page or nested layout

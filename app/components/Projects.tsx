@@ -1,7 +1,9 @@
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { Fragment } from "react";
 import Link from "next/link";
-import { ProjectFrontmatter } from "@/types/projects";
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
+
+// Type Imports
+import type { ProjectFrontmatter } from "@/types/projects";
 
 export default function Projects({ projects }: { projects: ProjectFrontmatter[] }) {
   return (

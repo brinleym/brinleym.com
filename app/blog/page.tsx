@@ -1,9 +1,11 @@
 import { getAllPosts } from "@/utils/blog";
-import { PostFrontmatter } from "@/types/blog";
 import PageHeading from "@/app/components/PageHeading";
+import Posts from "@/app/components/Posts";
 import Section from "@/app/components/Section";
 import SectionHeading from "@/app/components/SectionHeading";
-import Posts from "@/app/components/Posts";
+
+// Type Imports
+import type { PostFrontmatter } from "@/types/blog";
 
 export default async function Blog() {
   const posts: PostFrontmatter[] = await getAllPosts();

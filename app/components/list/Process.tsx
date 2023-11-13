@@ -1,16 +1,16 @@
 "use client";
-import { useState, Fragment } from "react";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
+import { Fragment, useState } from "react";
 
-export interface ListItem {
+export interface ProcessListItem {
   headline: string, 
   supportingText: string
 }
 
-export default function ThreeLineResponsiveList({ items }: { items: ListItem[] }) {
+export default function Process({ items }: { items: ProcessListItem[] }) {
   return (
     <ul className="flex flex-col divide-y divide-[var(--outline)]">
-      {items.map(({ headline, supportingText }: ListItem): React.ReactNode => {
+      {items.map(({ headline, supportingText }: ProcessListItem): React.ReactNode => {
         return (
           <Fragment key={headline}>
             <ListItem headline={headline} supportingText={supportingText} />
@@ -21,7 +21,7 @@ export default function ThreeLineResponsiveList({ items }: { items: ListItem[] }
   )
 }
 
-function ListItem({ headline, supportingText }: ListItem) {
+function ListItem({ headline, supportingText }: ProcessListItem) {
   const [isOpenOnMobile, setIsOpenOnMobile] = useState(false);
   return (
     <li className="py-4">

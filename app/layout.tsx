@@ -1,16 +1,17 @@
 import './globals.css'
-import { Analytics } from '@vercel/analytics/react';
-import type { Metadata } from 'next'
-import { Space_Grotesk } from 'next/font/google';
-import { Jost } from 'next/font/google';
-import { Inter } from 'next/font/google';
-import { Inter_Tight } from 'next/font/google';
-import Navbar from './components/NavBar';
+import { Analytics } from "@vercel/analytics/react";
+import { Inter_Tight } from "next/font/google";
+import { Jost } from "next/font/google";
+import Navbar from "./components/NavBar";
+import { Space_Grotesk } from "next/font/google";
 
-const spaceGrotesk = Space_Grotesk({
+// Type Imports
+import type { Metadata } from "next"
+
+const interTight = Inter_Tight({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
+  variable: "--font-inter-tight",
+  display: "swap", 
 });
 
 const jost = Jost({
@@ -19,21 +20,15 @@ const jost = Jost({
   display: "swap", 
 });
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap", 
-});
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-inter-tight",
-  display: "swap", 
+  variable: "--font-space-grotesk",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: 'Brinley Macnamara',
-  description: 'Brinley\'s Personal Website and Blog',
+  title: "Brinley Macnamara",
+  description: "Brinley\'s Personal Website and Blog",
 }
 
 export default function RootLayout({
@@ -44,10 +39,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`
-        ${spaceGrotesk.variable}
-        ${jost.variable}
-        ${inter.variable}
         ${interTight.variable}
+        ${jost.variable}
+        ${spaceGrotesk.variable}
       `}>
         <Navbar />
         <main className="z-0 mt-24 p-8 max-w-4xl mx-auto">

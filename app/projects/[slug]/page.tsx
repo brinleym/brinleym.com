@@ -1,13 +1,11 @@
-import fs from "fs";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import { getProjectSlugs } from "@/utils/projects";
-import { ProjectSlug, ProjectFrontmatter } from "@/types/projects";
 import CustomMDXRenderer from "@/app/components/CustomMDXRenderer";
-import Link from "next/link";
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+import fs from "fs";
+import { getProjectSlugs } from "@/utils/projects";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import type { ProjectFrontmatter, ProjectSlug } from "@/types/projects";
+import { serialize } from "next-mdx-remote/serialize";
 
-/* Create routes based on post filenames */
+// Create routes based on post filenames
 export async function generateStaticParams(): Promise<ProjectSlug[]> {
   return getProjectSlugs();
 }

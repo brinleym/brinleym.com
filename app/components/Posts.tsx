@@ -1,8 +1,10 @@
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import Date from "./Date";
 import { Fragment } from "react";
 import Link from "next/link";
-import { PostFrontmatter } from "@/types/blog";
-import Date from "./Date";
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
+
+// Type Imports
+import type { PostFrontmatter } from "@/types/blog";
 
 export default function Posts({ posts }: { posts: PostFrontmatter[] }) {
   return (

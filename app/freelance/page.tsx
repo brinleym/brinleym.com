@@ -1,19 +1,23 @@
 "use client";
-import { useState, useEffect, Fragment } from "react";
+import { ClipboardDocumentCheckIcon } from "@heroicons/react/24/solid";
+import { ClipboardDocumentIcon } from "@heroicons/react/24/solid";
+import { Fragment } from "react";
 import PageHeading from "@/app/components/PageHeading";
+import Process from "@/app/components/list/Process";
+import Reviews from "@/app/components/list/Reviews";
 import Section from "@/app/components/Section";
 import SectionHeading from "@/app/components/SectionHeading";
 import ServiceCard, { ServiceCardContent } from "@/app/components/card/ServiceCard";
-import { ListItem as ThreeLineResponsiveListItem } from "@/app/components/list/ThreeLineResponsiveList";
-import ThreeLineResponsiveList from "@/app/components/list/ThreeLineResponsiveList";
-import Reviews, { Review } from "@/app/components/list/Reviews";
-import { ClipboardDocumentIcon, ClipboardDocumentCheckIcon } from "@heroicons/react/24/solid";
+import { useEffect, useState } from "react";
+
+// Type Imports
+import type { ProcessListItem } from "@/app/components/list/Process";
+import type { Review } from "@/app/components/list/Reviews";
 
 const email: string = "brinley.macnamara@gmail.com";
 const phone: string = "+1 617 780-1409";
 const services: ServiceCardContent[] = [
   {
-    image: "/landing-page.png",
     headline: "Landing Page",
     supportingText: "A beautiful, performant, and focused landing page",
     details: {
@@ -25,7 +29,6 @@ const services: ServiceCardContent[] = [
     }
   },
   {
-    image: "/landing-page.png",
     headline: "Business Website",
     supportingText: "An organized, intuitive, and performant business website",
     details: {
@@ -37,7 +40,6 @@ const services: ServiceCardContent[] = [
     }
   },
   {
-    image: "/landing-page.png",
     headline: "Web Application",
     supportingText: "A bespoke web app that maxmizes usability,\
     security, and performance",
@@ -49,7 +51,6 @@ const services: ServiceCardContent[] = [
     }
   },
   {
-    image: "/landing-page.png",
     headline: "Technical Writing",
     supportingText: "Highly original, informational technical writing tailored \
     to any level of expertise",
@@ -58,7 +59,6 @@ const services: ServiceCardContent[] = [
     }
   },
   {
-    image: "/landing-page.png",
     headline: "Your Request",
     supportingText: "Have something else in mind? Feel free to reach out with \
     your request",
@@ -67,7 +67,7 @@ const services: ServiceCardContent[] = [
     }
   }
 ]
-const processSteps: ThreeLineResponsiveListItem[] = [
+const processSteps: ProcessListItem[] = [
   {
     headline: "1. Initial Call",
     supportingText: "A 30 minute call to review your project requirements. After \
@@ -210,11 +210,10 @@ export default function Freelance() {
       <Section>
         <SectionHeading>How I can help</SectionHeading>
         <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-4">
-          {services.map(({image, headline, supportingText, details}: ServiceCardContent) => {
+          {services.map(({headline, supportingText, details}: ServiceCardContent) => {
             return (
               <Fragment key={headline}>
                 <ServiceCard 
-                  image={image}
                   headline={headline}
                   supportingText={supportingText}
                   details={details}
@@ -226,7 +225,7 @@ export default function Freelance() {
       </Section>
       <Section>
         <SectionHeading>Stages of work</SectionHeading>
-        <ThreeLineResponsiveList items={processSteps} />
+        <Process items={processSteps} />
       </Section>
       <Section>
         <SectionHeading>Customer Reviews</SectionHeading>

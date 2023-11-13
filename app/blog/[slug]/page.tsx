@@ -1,17 +1,19 @@
-import fs from "fs";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import { getPostSlugs } from "@/utils/blog";
-import { PostSlug, PostFrontmatter } from "@/types/blog";
 import CustomMDXRenderer from "@/app/components/CustomMDXRenderer";
 import Date from "@/app/components/Date";
+import fs from "fs";
+import { getPostSlugs } from "@/utils/blog";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 
-/* Create routes based on post filenames */
+// Type Imports
+import type { PostFrontmatter, PostSlug } from "@/types/blog";
+
+// Create routes based on post filenames
 export async function generateStaticParams(): Promise<PostSlug[]> {
   return await getPostSlugs();
 }
 
-
+// Get post from slug
 async function getPost(slug: string): Promise<MDXRemoteSerializeResult<Record<string, unknown>, PostFrontmatter>> {
   const raw: string = fs.readFileSync(process.cwd() + "/posts/" + `${slug}.mdx`, 'utf-8');
  

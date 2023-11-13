@@ -1,12 +1,14 @@
 "use client";
-import { PostFrontmatter } from "@/types/blog";
-import { ProjectFrontmatter } from "@/types/projects";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import Link from "next/link";
-import SecondaryButton from "@/app/components/SecondaryButton";
-import Quote from "@/app/components/Quote";
 import Callout from "@/app/components/Callout";
 import Chip from "@/app/components/Chip";
+import Link from "next/link";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import Quote from "@/app/components/Quote";
+import SecondaryButton from "@/app/components/SecondaryButton";
+
+// Type Imports
+import type { PostFrontmatter } from "@/types/blog";
+import type { ProjectFrontmatter } from "@/types/projects";
 
 type Frontmatter = PostFrontmatter | ProjectFrontmatter;
 

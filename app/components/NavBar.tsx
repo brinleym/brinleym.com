@@ -1,7 +1,19 @@
-'use client';
-import Link from 'next/link'
-import { usePathname } from 'next/navigation';
-import { useState, Fragment, useEffect } from 'react';
+"use client";
+import { Fragment } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+
+interface DesktopMenuLinkProps {
+  path: string,
+  text: string,
+  isCurrentRoute: boolean
+}
+
+interface MenuLink {
+  path: string, 
+  text: string,
+}
 
 interface MobileMenuProps {
   isOpen: boolean,
@@ -13,17 +25,6 @@ interface MobileMenuLinkProps {
   text: string,
   isCurrentRoute: boolean,
   setMobileMenuIsOpen: (arg0: false) => void
-}
-
-interface DesktopMenuLinkProps {
-  path: string,
-  text: string,
-  isCurrentRoute: boolean
-}
-
-interface MenuLink {
-  path: string, 
-  text: string,
 }
 
 const menuItems: MenuLink[] = [
@@ -55,16 +56,16 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    window.addEventListener('resize', closeMobileMenuOnResize);
+    window.addEventListener("resize", closeMobileMenuOnResize);
     return () => {
-      window.removeEventListener('resize', closeMobileMenuOnResize);
+      window.removeEventListener("resize", closeMobileMenuOnResize);
     };
   }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', recolorDesktopMenuWhenScrolled);
+    window.addEventListener("scroll", recolorDesktopMenuWhenScrolled);
     return () => {
-      window.removeEventListener('scroll', recolorDesktopMenuWhenScrolled);
+      window.removeEventListener("scroll", recolorDesktopMenuWhenScrolled);
     }
   }, []);
 
