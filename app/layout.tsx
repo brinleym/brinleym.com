@@ -1,4 +1,5 @@
 import './globals.css'
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next'
 import { Space_Grotesk } from 'next/font/google';
 import { Jost } from 'next/font/google';
@@ -52,6 +53,7 @@ export default function RootLayout({
         <main className="z-0 mt-24 p-8 max-w-4xl mx-auto">
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   )
