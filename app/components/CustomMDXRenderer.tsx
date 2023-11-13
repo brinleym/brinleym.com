@@ -18,15 +18,15 @@ const components = {
   h3: (props: any) => 
     <h3 className="text-2xl my-4">{props.children}</h3>,
   p: (props: any) => 
-    <p className="my-2">{props.children}</p>,
+    <p className="my-2 blog-body-font">{props.children}</p>,
   a: (props: any) => 
-    <Link href={props.href} className="underline" target="_blank">{props.children}</Link>,
+    <Link href={props.href} className="underline blog-body-font" target="_blank">{props.children}</Link>,
   ul: (props: any) => 
-    <ul className="mx-6 my-1 list-disc">{props.children}</ul>,
+    <ul className="mx-6 my-1 list-disc blog-body-font">{props.children}</ul>,
   ol: (props: any) => 
-    <ol className="mx-6 my-1 list-decimal" >{props.children}</ol>,
+    <ol className="mx-6 my-1 list-decimal blog-body-font" >{props.children}</ol>,
   li: (props: any) => 
-    <li className="">{props.children}</li>,
+    <li>{props.children}</li>,
   code: (props: any) => 
     <code className="text-base py-0.5 px-1 bg-[var(--surface-variant)] text-[var(--on-surface-variant)] border border-[var(--outline)] rounded">
       {props.children}
