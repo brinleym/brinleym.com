@@ -13,7 +13,7 @@ export default function Projects({ projects }: { projects: ProjectFrontmatter[] 
           <Fragment key={title}>
             <Link
               href={`/projects/${slug}`}
-              className="group flex flex-col p-4 shadow rounded-lg border border-[var(--outline)] hover:bg-[var(--hover-background)]"
+              className="group flex flex-col p-4 shadow rounded-xl border border-[var(--outline)] hover:bg-[var(--hover-background)]"
             >
               <h3 className="group-hover:underline text-2xl">{title}</h3>
               <div className="flex flex-row justify-between items-center">
