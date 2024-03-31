@@ -4,138 +4,21 @@ date: "2023-10-26"
 draft: false
 ---
 
-Last November, I was among the millions of humans who were both surprised and 
-inspired by ChatGPT's breathtaking coding abilities. As a coder myself, I felt 
-compelled to understand three things:
-1. Just how "good" is ChatGPT at coding? Obviously, the anecdotes from users is that ChatGPT is very good at coding. However, I wanted to find concrete numerical data to objectively answer this question
-2. How did ChatGPT get so good at coding?
-3. As a software engineer whose job security depends on my coding skills, what will ChatGPT - and its future versions - mean for me?
+In November 2023, I was among the millions of humans who were amazed by ChatGPT's breathtaking coding 
+abilities. Since then, I've observed that many programmers have reacted to ChatGPT with a mixture 
+of confusion, excitement, and fear. To better understand the impact of ChatGPT on myself and my
+fellow programmers, I conducted interviews with a software engineer, top AI researcher, and CS 
+professor. These three interviews were extremely eye-opening and helped to debunk some of the common
+narratives about ChatGPT that have circulated on Reddit, Twitter, etc.
 
-I thoroughly researched these questions and have compiled my findings in a 
-[podcast](https://drive.google.com/file/d/1gl8E0v2KBmLAtkMorCZwepIzdi6HS2kr/view?usp=drive_link) 
-— featuring interviews with several guests, including another software 
-engineer, a top AI researcher, and a CS professor. I'm writing this post to 
-summarize my findings - as I'm aware podcasts aren't everyone's 
-preferred medium.
+Disclaimer: Since ChatGPT (and LLMs more broadly) are still in their early days, there will probably
+be some statements in this article that don't age well. Hence, you should take this post with
+a grain of salt, and always seek to verify information with multiple sources/anecdotes.
 
-Note: My research covered a variety of Large Language Models, chatbots, and 
-AI-based code generation tools, including ChatGPT, Github Copilot, GPT4, 
-and AlphaCode.
+Without further ado, here are several "myths" about LLMs that my research/interviews have debunked 
+(at least for now):
 
-## Quantifying how <q>good</q> ChatGPT is at coding
-
-**ChatGPT stats:**
-- Solved 12/41 of Leetcode Easy problems ([source](https://openai.com/research/gpt-4))
-- Solved 8/80 of Leetcode Medium problems ([source](https://openai.com/research/gpt-4))
-- Solved 0/45 of Leetcode Hard problems ([source](https://openai.com/research/gpt-4))
-
-**GPT4 stats:**
-- Solved 31/41 of Leetcode Easy problems ([source](https://openai.com/research/gpt-4))
-- Solved 21/80 of Leetcode Medium problems ([source](https://openai.com/research/gpt-4))
-- Solved 3/45 of Leetcode Hard problems ([source](https://openai.com/research/gpt-4))
-- "Early access" version scored 100% on an Amazon coding interview assessment in under 3 minutes ([source](https://www.youtube.com/watch?v=qbIk7-JPB2c))
-
-**AlphaCode stats:**
-- Scored in top 54% of participants in CodeForces coding competition ([source](https://arxiv.org/pdf/2203.07814.pdf))
-
-## How did ChatGPT get so good at coding?
-
-According Dr. Omar Costilla Reyes (an Machine Learning researcher 
-at MIT), a key moment in the lead up to ChatGPT occurred a little over 10 
-years ago. This key moment was the development of AlexNet - a ground breaking 
-neural network for image classification. In 2012, the creators of AlexNet 
-entered it into a competition for classifying image where it blew away its 
-competitors. 
-
-Omar noted that for many ML researchers, AlexNet was an important "proof of 
-concept" for neural networks - a type of machine learning model that is based 
-on the human brain. While neural networks had been around for decades, AlexNet 
-was the first time a neural network had been used to solve a "practical problem, 
-at a large scale."
-
-Looking back, many ML researchers say that AlexNet was an early sign of the 
-so-called "big bang" of Deep Learning - a sub-field of Machine Learning that 
-deals with the development of neural networks. This is because AlexNet benefited 
-from a confluence of three critical technologies that were finally reaching 
-maturity after decades of development. These critical technologies were:
-1. Deep neural network architectures
-2. Extremely large and high quality public datasets. Specifically, AlexNet was trained on a dataset called ImageNet, which has its own [interesting backstory](https://www.youtube.com/watch?v=c_u4AHNjOpk&t=541s) and is arguably just as important to the field of Deep Learning as AlexNet itself
-3. And finally, a new generation of graphics processing units that were highly effective at speeding up the training of machine learning models 
-
-After this so-called "big bang" of deep learning, it was clear to ML researchers 
-that the process of training a neural network to discover the optimal program 
-for certain computational tasks, such as image recognition, was far superior to 
-a human programmer sitting down and using basic heuristics to write a program 
-for the same task. A decade later, ChatGPT finally caught the rest of the world
-up to this fact.
-
-## What does ChatGPT mean for software engineers?
-
-It's hard to predict the future. However, as a software engineer myself, I 
-firmly believe that Large Language Models like ChatGPT will disrupt software 
-engineering more than any other field. Keeping in mind that future predictions 
-are usually inaccurate, here are some *tentative* predictions (based on my 
-personal experience with ChatGPT as well as expert interviews):
-
-- **ChatGPT will influence language choice.** In our interview, Dr. Jules White 
-(a Computer Science professor at Vanderbilt) mentioned that ChatGPT will 
-probably encourage greater use of languages that ChatGPT is very good at, 
-namely Python and Javascript. While Python and Javascript were extremely 
-popular prior to ChatGPT, ChatGPT will likely drive even more developers to 
-adopt these languages, at the expense of less popular scripting languages — 
-like Ruby and Perl.
-- **ChatGPT will not turn bad programmers into great programmers.** I firmly 
-believe that ChatGPT will not close the chasm between bad programmers and 
-great programmers because great programmers are great a variety of skills that
-include (but are not limited to) writing code. Here is a non-exhaustive list
-of some of the skills that great programmers are really good at:
-    * System design
-    * API design
-    * User Interface (UI) design
-    * Testing
-    * Talking to customers
-    * Talking to other engineers
-    * Writing documentation
-    * Debugging code
-    * Debugging other people's code
-    * Refactoring code
-    * Refactoring other people's code  
-    * Learning new things
-    * Automating their work
-
-  Getting really good at above skills requires hard work and a relentless drive to 
-  self improve. While I certainly believe AI will get better at all of the above 
-  skills, there is no replacement for hard work. Thus, I believe that great 
-  programmers will be more likley to put in the work to adapt to the inevitable 
-  changes that AI brings about. This means that, if anything, AI will widen the 
-  gap between high and low performers, as it gives high performers the ability to 
-  do more with less.
-- **Prompt Engineering is a thing.** In our interview, Dr. White mentioned that 
-prompt engineering will be a critical skill for software engineers in the 
-ChatGPT era. Luckily, research shows that software engineers are already better 
-than the average person at prompt engineering. I think this is because we are
-more likely to treat prompt engineering like the process of debugging code,
-where we try something, see if it works, and iterate on the solution from there.
-However, this is definitely a skill that software engineers should consider 
-investing time into learning and improving. One way to learn prompt 
-engineering is simply to use ChatGPT and/or Github Copilot whenever you code. 
-There are also several Coursera courses on prompt engineering for 
-software engineers (including Dr. White's own [course](https://www.coursera.org/learn/prompt-engineering)) 
-- **ChatGPT will *eventually* replace software engineers.** This is something 
-that I spoke about at length with Adam Hughes, a fellow software engineer from 
-the Northeast. In an article that was covered by Business Insider, Adam predicted a 
-fairly aggressive timeline for ChatGPT replacing 100% of software engineers: just 
-10 years. While I think the process will be a lot slower, I agree with Adam. 
-ChatGPT will eventually replace software engineers. It's less clear what 
-types of human-friendly jobs will be left in its wake. However, thus far, the 
-progression of software and computer technology has pushed software engineers 
-to higher and higher layers of abstraction, so my best guess is that human software 
-engineers will be displaced to even higher layers of abstraction that reside 
-on top of AI-based code generation tools, like ChatGPT.
-
-## Myth Busting
-
-### All ChatGPT does is <q>remix</q> text it's been trained on, so it will always be dependent on human coders to improve
+## Myth #1: All ChatGPT does is <q>remix</q> text it's been trained on, so it will always be dependent on human coders to improve
 
 Research from the top AI institutions has shown that ChatGPT does not just 
 “remix” text it's been trained on. In fact, researchers have discovered that 
@@ -160,7 +43,7 @@ up with the core logic for solving a problem.
 These early signs of creativity open up the possibility that AI might one day be 
 able to write code to improve itself, without intervention from humans.
 
-### If you are a software engineer who is worried about being replaced by ChatGPT, then you are probably bad at your job
+## Myth #2: If you are a software engineer who is worried about being replaced by ChatGPT, then you are probably bad at your job
 
 As of today, Machine Learning models are objectively better at discovering 
 solutions for certain computational tasks, such as image recognition and 
@@ -184,7 +67,7 @@ No programmer can avoid being replaced by AI, so the best programmers will
 likely be the ones who are quickest to pivot to new AI-based tech stacks to 
 take advantage of their productivity enhancements.
 
-### ChatGPT has made technical coding interviews obsolete
+## Myth #3: ChatGPT has made technical coding interviews obsolete
 
 While ChatGPT has definitely made it a lot easier to cheat on coding interviews, 
 I don't foresee coding interviews going away anytime soon. This is because, as 
@@ -196,7 +79,7 @@ lots of mistakes and struggles to come up with solutions to hard coding problems
 the nature of technical coding interviews will evolve. But as long as software 
 engineers are around, technical coding interviews are here to stay.
 
-### ChatGPT is a <q>chatbot</q>
+## Myth #4: ChatGPT is a <q>chatbot</q>
 
 If I had to choose one important takeaway from my expert interviews, its 
 something Dr. White mentioned towards the end of our interview:
@@ -206,7 +89,7 @@ something Dr. White mentioned towards the end of our interview:
   questions like Google. I think all of those things are missing the mark. It's 
   a completely new computational architecture that has capabilities that we 
   don't fully understand yet. 
-  <cite>- Dr. Jules White</cite>
+  <cite>- Dr. Jules White, CS Professor @ Vanderbilt</cite>
 </Quote>
 
 This sentiment — that ChatGPT (and Large Language Models more broadly) are not 
